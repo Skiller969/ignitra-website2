@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1770822358118,
+    "name": "Test User",
+    "email": "test@example.com",
+    "interest": "SEO",
+    "date": "2026-02-11T15:05:58.118Z"
+  },
+  {
+    "id": 1770823166890,
+    "name": "Browser Test 2",
+    "email": "browser2@test.com",
+    "interest": "SEO",
+    "date": "2026-02-11T15:19:26.890Z"
+  },
+  {
+    "id": 1770823355232,
+    "name": "Email Test",
+    "email": "email@test.com",
+    "interest": "Ads",
+    "date": "2026-02-11T15:22:35.232Z"
+  }
+]
