@@ -1,0 +1,14 @@
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Generated and local files
+.DS_Store
+npm-debug.log*
+
+# Visitor registration data
+registrations.json
