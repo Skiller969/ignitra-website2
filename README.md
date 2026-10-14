@@ -31,8 +31,9 @@ This project gave me experience building a business-focused website and connecti
 
 ### Desktop View
 
-![Ignitra Media Homepage(DeskTop)](<./public/screenshots/homePage(DeskTop).png>)
-![Ignitra Media contactForm (DeskTop)](<./public/screenshots/contactForm(deskTop).png>)
+![Ignitra Media Homepage(DeskTop)](<./public/screenshots/homePage(Desk_
+Top).png>)
+![Ignitra Media contactForm (DeskTop)](<./public/screenshots/contactForm(desk_Top).png>)
 
 ### Mobile View
 
