@@ -1,75 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('registrationForm');
-    const formMessage = document.getElementById('formMessage');
-    const btnText = document.getElementById('btnText');
-    const btnLoader = document.getElementById('btnLoader');
+  const menuButton = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+  function closeMenu() {
+    mobileMenu.hidden = true;
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation');
+  }
 
-        // Reset message
-        formMessage.classList.add('hidden');
-        formMessage.classList.remove('text-green-500', 'text-red-500');
+  menuButton.addEventListener('click', () => {
+    const opening = mobileMenu.hidden;
+    mobileMenu.hidden = !opening;
+    menuButton.setAttribute('aria-expanded', String(opening));
+    menuButton.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+  });
 
-        // Loading state
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        btnText.textContent = 'Submitting...';
-        btnLoader.classList.remove('hidden');
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
 
-        // Get data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
 
-        try {
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-            const result = await response.json();
+  const form = document.getElementById('registrationForm');
+  const message = document.getElementById('formMessage');
+  const button = form.querySelector('button[type="submit"]');
+  const buttonText = document.getElementById('btnText');
+  const loader = document.getElementById('btnLoader');
 
-            if (response.ok) {
-                formMessage.textContent = 'Thanks! We will be in touch soon.';
-                formMessage.classList.add('text-green-500');
-                formMessage.classList.remove('hidden');
-                form.reset();
-            } else {
-                throw new Error(result.error || 'Something went wrong');
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-            formMessage.textContent = error.message;
-            formMessage.classList.add('text-red-500');
-            formMessage.classList.remove('hidden');
-        } finally {
-            // Reset button state
-            submitBtn.disabled = false;
-            btnText.textContent = 'Get Free Consultation';
-            btnLoader.classList.add('hidden');
-        }
-    });
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
 
-    // Simple scroll animation observer
-    const observerOptions = {
-        threshold: 0.1
-    };
+    const data = Object.fromEntries(new FormData(form).entries());
+    message.hidden = true;
+    message.className = 'form-message';
+    button.disabled = true;
+    buttonText.textContent = 'Sending...';
+    loader.hidden = false;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('opacity-100', 'translate-y-0');
-                entry.target.classList.remove('opacity-0', 'translate-y-10');
-            }
-        });
-    }, observerOptions);
-
-    // Apply fade-in animation to sections
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
-        observer.observe(section);
-    });
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Could not send your enquiry. Please try again.');
+      message.textContent = 'Thanks for reaching out! Your enquiry has been received.';
+      message.classList.add('success');
+      form.reset();
+    } catch (error) {
+      message.textContent = error.message || 'Something went wrong. Please try again.';
+      message.classList.add('error');
+    } finally {
+      message.hidden = false;
+      button.disabled = false;
+      buttonText.textContent = 'Send enquiry ↗';
+      loader.hidden = true;
+    }
+  });
 });
