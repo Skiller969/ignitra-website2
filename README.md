@@ -27,10 +27,24 @@ This project gave me experience building a business-focused website and connecti
 
 ## Screenshots
 
-![Ignitra Media Homepage(DeskTop)](<ignitra-website2/public/screenshots/homePage(DeskTop).png>)
-![Ignitra Media contactForm DeskTop)](<ignitra-website2/public/screenshots/contactForm(deskTop).png>)
-![Ignitra Media Homepage(mobile)](<ignitra-website2/public/screenshots/homepage(moile).png>)
-![Ignitra Media contactForm(mobile)](<ignitra-website2/public/screenshots/contactForm(mobile).png>)
+## Screenshots
+
+### Desktop View
+
+![Ignitra Media Homepage(DeskTop)](<./public/screenshots/homePage(DeskTop).png>)
+![Ignitra Media contactForm (DeskTop)](<./public/screenshots/contactForm(deskTop).png>)
+
+### Mobile View
+
+![Ignitra Media Homepage(mobile)](<./public/screenshots/homepage(moile).png>)
+![Ignitra Media contactForm(mobile)](<./public/screenshots/contactForm(mobile).png>)
+
+### Mobile View
+
+<p float="left">
+  <img src="./public/screenshots/homepage(moile).png" width="45%" />
+  <img src="./public/screenshots/contactForm(mobile).png" width="45%" />
+</p>
 
 ## Technologies Used
 
