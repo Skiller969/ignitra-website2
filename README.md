@@ -25,15 +25,24 @@ This project gave me experience building a business-focused website and connecti
 - Email notifications using Nodemailer
 - Local JSON storage for submitted enquiries
 
+## Screenshots
+
+![Ignitra Media Homepage(DeskTop)](<ignitra-website2/public/screenshots/homePage(DeskTop).png>)
+![Ignitra Media contactForm DeskTop)](<ignitra-website2/public/screenshots/contactForm(deskTop).png>)
+![Ignitra Media Homepage(mobile)](<ignitra-website2/public/screenshots/homepage(moile).png>)
+![Ignitra Media contactForm(mobile)](<ignitra-website2/public/screenshots/contactForm(mobile).png>)
+
 ## Technologies Used
 
 **Frontend**
+
 - HTML
 - CSS
 - JavaScript
 - Tailwind CSS
 
 **Backend**
+
 - Node.js
 - Express.js
 - Nodemailer
